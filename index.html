@@ -1,12 +1,1252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+ <style>
+body {
+  font-family: Arial;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  padding: 7%;
+  background-image: url("https://i.pinimg.com/originals/de/34/12/de3412e3c5d2ed0b11ec8291a28a3db5.gif"); 
+    background-position: center 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.periodic-row {
+  clear: both;
+  height: 10%;
+}
+.cell {
+  float: left;
+  position: relative;
+  width: 5.55%;
+  height: 100%;
+}
+.cell1 {
+    float: left;
+    position: relative;
+    width: 150%;
+    height: 150%;
+    zoom: 150%;
+}
+.cell2 {
+    float: left;
+    position: relative;
+    width: 330%;
+    height: 150%;
+    zoom: 150%;
+}
+.element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 1px;
+  right: 1px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  cursor: default;
+  pointer-events: none;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  background-color: #1cedae
+}
+.element1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 1px;
+  right: 1px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  cursor: default;
+  pointer-events: none;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  background-color: rgba(0, 128, 128, 0.6);
+}
+.cell:hover .element {
+  border-color: rgba(0, 0, 0, 0.1);
+  -webkit-transform: scale(3, 3);
+  -ms-transform: scale(3, 3);
+  transform: scale(3, 3);
+  z-index: 1;
+  background-color: rgba(0, 128, 128, 0.9);
+}
+.at_num,
+.at_details {
+  position: absolute;
+  font-size: 4px;
+  color: #000;
+  opacity: 0;
+}
+.at_num {
+  top: 4px;
+  right: 5px;
+}
+.symbol {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  right: 0px;
+  margin-top: -4px;
+  font-size: 9px;
+  line-height: 1;
+  height: 9px;
+  color: #000;
+}
+.at_details {
+  bottom: 4px;
+  top: 73%;
+  left: 0px;
+  right: 0px;
+}
+.cell:nth-child(-n+2) .element{
+  background-color: #903495
+}
+.cell:nth-child(-n+2):hover .element{ 
+  background-color: #a7fd2a
+}
+.periodic-row:nth-child(-n+6) .cell:nth-child(18) .element {
+  background-color: #e7c500
+}
+.periodic-row:nth-child(-n+6) .cell:nth-child(18):hover .element {
+  background-color: #d0ccd1
+}
+.periodic-row:nth-child(n+2) .cell:nth-child(1) .element {
+  background-color: #ff1493
+}
+.periodic-row:nth-child(n+2) .cell:nth-child(1):hover .element {
+  background-color: #fa448c
+}
+.periodic-row:nth-child(1) .cell:nth-child(1) .element {
+  background-color: #1cedae
+}
+.periodic-row:nth-child(1) .cell:nth-child(1):hover .element {
+  background-color: #d0ccd1
+}
+.periodic-row:nth-child(-n+7) .cell:nth-child(3) .element,
+.periodic-row:nth-child(-n+7) .cell:nth-child(4) .element,
+.periodic-row:nth-child(-n+7) .cell:nth-child(5) .element,
+.periodic-row:nth-child(-n+7) .cell:nth-child(6) .element,
+.periodic-row:nth-child(-n+7) .cell:nth-child(7) .element,
+.periodic-row:nth-child(-n+7) .cell:nth-child(8) .element,
+.periodic-row:nth-child(-n+7) .cell:nth-child(9) .element,
+.periodic-row:nth-child(-n+7) .cell:nth-child(10) .element,
+.periodic-row:nth-child(-n+7) .cell:nth-child(11) .element,
+.periodic-row:nth-child(-n+7) .cell:nth-child(12) .element {
+  background-color: #a7fd2a
+}
+
+.periodic-row:nth-child(2) .cell:nth-child(13) .element,
+.periodic-row:nth-child(3) .cell:nth-child(14) .element,
+.periodic-row:nth-child(4) .cell:nth-child(14) .element,
+.periodic-row:nth-child(4) .cell:nth-child(15) .element,
+.periodic-row:nth-child(5) .cell:nth-child(15) .element,
+.periodic-row:nth-child(5) .cell:nth-child(16) .element,
+.periodic-row:nth-child(6) .cell:nth-child(16) .element {
+  background-color: #00fff6
+}
+
+.periodic-row:nth-child(2) .cell:nth-child(14) .element,
+.periodic-row:nth-child(2) .cell:nth-child(15) .element,
+.periodic-row:nth-child(3) .cell:nth-child(15) .element,
+.periodic-row:nth-child(2) .cell:nth-child(16) .element,
+.periodic-row:nth-child(3) .cell:nth-child(16) .element,
+.periodic-row:nth-child(4) .cell:nth-child(16) .element{
+    background-color: #ab8fff;
+}
+
+
+.periodic-row:nth-child(-n+6) .cell:nth-child(17) .element{
+      background-color: #fb8dff;
+}
+.periodic-row:nth-child(3) .cell:nth-child(13) .element,
+.periodic-row:nth-child(4) .cell:nth-child(13) .element,
+.periodic-row:nth-child(5) .cell:nth-child(13) .element,
+.periodic-row:nth-child(6) .cell:nth-child(13) .element,
+.periodic-row:nth-child(5) .cell:nth-child(14) .element,
+.periodic-row:nth-child(6) .cell:nth-child(14) .element,
+.periodic-row:nth-child(6) .cell:nth-child(15) .element{
+    background-color:#fea444
+}
+.periodic-row:nth-child(7) .cell:nth-child(13) .element,
+.periodic-row:nth-child(7) .cell:nth-child(14) .element,
+.periodic-row:nth-child(7) .cell:nth-child(15) .element,
+.periodic-row:nth-child(7) .cell:nth-child(16) .element,
+.periodic-row:nth-child(7) .cell:nth-child(17) .element,
+.periodic-row:nth-child(7) .cell:nth-child(18) .element{
+    background-color:#c8c8c8;
+}
+.periodic-row:nth-child(9) .cell:nth-child(4) .element,
+.periodic-row:nth-child(9) .cell:nth-child(5) .element,
+.periodic-row:nth-child(9) .cell:nth-child(6) .element,
+.periodic-row:nth-child(9) .cell:nth-child(7) .element,
+.periodic-row:nth-child(9) .cell:nth-child(8) .element,
+.periodic-row:nth-child(9) .cell:nth-child(9) .element,
+.periodic-row:nth-child(9) .cell:nth-child(10) .element,
+.periodic-row:nth-child(9) .cell:nth-child(11) .element,
+.periodic-row:nth-child(9) .cell:nth-child(12) .element,
+.periodic-row:nth-child(9) .cell:nth-child(13) .element,
+.periodic-row:nth-child(9) .cell:nth-child(14) .element,
+.periodic-row:nth-child(9) .cell:nth-child(15) .element,
+.periodic-row:nth-child(9) .cell:nth-child(16) .element,
+.periodic-row:nth-child(9) .cell:nth-child(17) .element,
+.periodic-row:nth-child(9) .cell:nth-child(18) .element{
+    background-color:#d0ccd1
+}
+.periodic-row:nth-child(10) .cell:nth-child(4) .element,
+.periodic-row:nth-child(10) .cell:nth-child(5) .element,
+.periodic-row:nth-child(10) .cell:nth-child(6) .element,
+.periodic-row:nth-child(10) .cell:nth-child(7) .element,
+.periodic-row:nth-child(10) .cell:nth-child(8) .element,
+.periodic-row:nth-child(10) .cell:nth-child(9) .element,
+.periodic-row:nth-child(10) .cell:nth-child(10) .element,
+.periodic-row:nth-child(10) .cell:nth-child(11) .element,
+.periodic-row:nth-child(10) .cell:nth-child(12) .element,
+.periodic-row:nth-child(10) .cell:nth-child(13) .element,
+.periodic-row:nth-child(10) .cell:nth-child(14) .element,
+.periodic-row:nth-child(10) .cell:nth-child(15) .element,
+.periodic-row:nth-child(10) .cell:nth-child(16) .element,
+.periodic-row:nth-child(10) .cell:nth-child(17) .element,
+.periodic-row:nth-child(10) .cell:nth-child(18) .element{
+    background-color:#cf0060;
+}
+.cell:nth-child(1) .element {
+  -webkit-transform-origin: 0 50%;
+  -ms-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+}
+.cell:nth-child(18) .element {
+  -webkit-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+.periodic-row:nth-child(10) .cell .element {
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+.periodic-row:nth-child(1) .cell:nth-child(1) .element {
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+.periodic-row:nth-child(1) .cell:nth-child(18) .element {
+  -webkit-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+.periodic-row:nth-child(10) .cell:nth-child(18) .element {
+  -webkit-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+}
+@media (min-width: 600px) {
+  .periodic {
+    height: 460px;
+    margin-right: -2px;
+  }
+  .at_details, .ener,.elec{
+    font-size: 4px;
+    opacity: 1;
+  }
+   .at_num, .at_num1{
+     font-size: 6px;
+    opacity: 1;
+   }
+  .symbol {
+    margin-top: -13px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+    height: 30px;
+    color: #000;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  }
+}
+@media (min-width: 800px) {
+  .periodic {
+    height: 540px;
+  }
+  .symbol {
+    font-size: 18px;
+  }
+}
+@media (min-width: 992px) {
+  .periodic {
+    height: 680px;
+  }
+  .at_details {
+    font-size: 5px;
+  }
+  .at_num, .at_num1{
+     font-size: 7px;
+   }
+  .symbol {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .periodic {
+    height: 800px;
+  }
+  .at_details {
+    font-size: 6px;
+  }
+  }
+  .at_num, .at_num1{
+     font-size: 10px;
+   }
+  .symbol {
+    font-size: 30px;
+  }
+ </style>
+ </head>
+  <body>
+    <div class="periodic">
+      <div class="periodic-row">
+        <div class="cell">
+          <div class="element"  class="type-4 cat-3">
+            <div class="at_num">1</div>
+            <div class="symbol">H</div>
+            <div class="at_details">html<br/>1s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell">
+          <div class="element" class="type-2 cat-3">
+            <div class="at_num">84</div>
+            <div class="symbol">Nsc</div>
+            <div class="at_details">noscript<br/>1s<sup>2</sup></div>
+          </div>
+        </div>
+      </div>
+      <div class="periodic-row">
+        <div class="cell">
+          <div class="element" class="type-2 cat-3">
+            <div class="at_num">2</div>
+            <div class="symbol">Hd</div>
+            <div class="at_details">head<br/>1s<sup>2</sup>2s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element"  class="type-5 cat-2">
+            <div class="at_num">8</div>
+            <div class="symbol">St</div>
+            <div class="at_details">style<br/>1s<sup>2</sup>2s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell">
+        <div class="cell1">
+            <div class="element">
+            <div class="at_num">0</div>
+            <div class="symbol">MZX</div>
+            <div class="at_details">Zorzoni Miguel<br/>Ultima actualizacion: 29/6<sup></<su2<sup></div>
+          </div>
+          </div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">54</div>
+            <div class="symbol">Au</div>
+            <div class="at_details">audio<br/>1s<sup>2</sup>
+            2s<sup>2</sup>2p<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">60</div>
+            <div class="symbol">Cap</div>
+            <div class="at_details">Caption<br/>1s<sup>2</sup>
+            2s<sup>2</sup>2p<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">66</div>
+            <div class="symbol">Tr</div>
+            <div class="at_details">tr<br/>1s<sup>2</sup>
+            2s<sup>2</sup>2p<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">72</div>
+            <div class="symbol">But</div>
+            <div class="at_details">buttom<br/>1s<sup>2</sup>
+            2s<sup>2</sup>2p<sup>4</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">78</div>
+            <div class="symbol">Out</div>
+            <div class="at_details">output<br/>1s<sup>2</sup>
+            2s<sup>2</sup>2p<sup>5</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">85</div>
+            <div class="symbol">Tp</div>
+            <div class="at_details">template<br/>1s<sup>2</sup>
+            2s<sup>2</sup>2p<sup>6</sup></div>
+          </div>
+        </div>
+      </div>
+      <div class="periodic-row">
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">3</div>
+            <div class="symbol">Bd</div>
+            <div class="at_details">Body<br/>[Ne]3s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">9</div>
+            <div class="symbol">P</div>
+            <div class="at_details">p<br/>[Ne]3s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">55</div>
+            <div class="symbol">Src</div>
+            <div class="at_details">source<br/>[Ne]3s<sup>2</sup>3p<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">61</div>
+            <div class="symbol">Cg</div>
+            <div class="at_details">colgroup<br/>[Ne]3s<sup>2</sup>3p<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">67</div>
+            <div class="symbol">Th</div>
+            <div class="at_details">th<br/>[Ne]3s<sup>2</sup>3p<sup>3</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">73</div>
+            <div class="symbol">Sel</div>
+            <div class="at_details">select<br/>[Ne]3s<sup>2</sup>3p<sup>4</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">79</div>
+            <div class="symbol">Prg</div>
+            <div class="at_details">progress<br/>[Ne]3s<sup>2</sup>3p<sup>5</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">86</div>
+            <div class="symbol">Sl</div>
+            <div class="at_details">slot<br/>[Ne]3s<sup>2</sup>3p<sup>6</sup></div>
+          </div>
+        </div>
+      </div>
+      <div class="periodic-row">
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">4</div>
+            <div class="symbol">Ti</div>
+            <div class="at_details">title<br/>[Ar]4s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">10</div>
+            <div class="symbol">Hr</div>
+            <div class="at_details">hr<br/>[Ar]4s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">14</div>
+            <div class="symbol">Ul</div>
+            <div class="at_details">ul<br/>[Ar]3d<sup>1</sup>4s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">18</div>
+            <div class="symbol">Dd</div>
+            <div class="at_details">dd<br/>[Ar]3d<sup>2</sup>4s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">22</div>
+            <div class="symbol">Mn</div>
+            <div class="at_details">Main<br/>[Ar]3d<sup>3</sup>4s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">26</div>
+            <div class="symbol">Sm</div>
+            <div class="at_details">small<br/>[Ar]3d<sup>5</sup>4s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">30</div>
+            <div class="symbol">Dfn</div>
+            <div class="at_details">dfn<br/>[Ar]3d<sup>5</sup>4s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">34</div>
+            <div class="symbol">Co</div>
+            <div class="at_details">code<br/>[Ar]3d<sup>6</sup>4s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">38</div>
+            <div class="symbol">Sub</div>
+            <div class="at_details">sub<br/>[Ar]3d<sup>7</sup>4s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">42</div>
+            <div class="symbol">U</div>
+            <div class="at_details">u<br/>[Ar]3d<sup>8</sup>4s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">46</div>
+            <div class="symbol">Wbr</div>
+            <div class="at_details">wbr<br/>[Ar]3d<sup>10</sup>4s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">50</div>
+            <div class="symbol">Emb</div>
+            <div class="at_details">embed<br/>[Ar]3d<sup>10</sup>4s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">56</div>
+            <div class="symbol">Trk</div>
+            <div class="at_details">track<br/>[Ar]3d<sup>10</sup>4s<sup>2</sup>>4p<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">62</div>
+            <div class="symbol">Col</div>
+            <div class="at_details">col<br/>[Ar]3d<sup>10</sup>4s<sup>2</sup>>4p<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">68</div>
+            <div class="symbol">Td</div>
+            <div class="at_details">td<br/>[Ar]3d<sup>10</sup>4s<sup>2</sup>>4p<sup>3</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">74</div>
+            <div class="symbol">Dtl</div>
+            <div class="at_details">datalist<br/>[Ar]3d<sup>10</sup>4s<sup>2</sup>>4p<sup>4</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">80</div>
+            <div class="symbol">Met</div>
+            <div class="at_details">meter<br/>[Ar]3d<sup>10</sup>4s<sup>2</sup>>4p<sup>5</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">87</div>
+            <div class="symbol">Cv</div>
+            <div class="at_details">Canvas<br/>[Ar]3d<sup>10</sup>4s<sup>2</sup>>4p<sup>6</sup></div>
+          </div>
+        </div>
+      </div>
+      <div class="periodic-row">
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">5</div>
+            <div class="symbol">Bs</div>
+            <div class="at_details">base<br/>[kr]5s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">11</div>
+            <div class="symbol">Pre</div>
+            <div class="at_details">pre<br/>[kr]5s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">15</div>
+            <div class="symbol">Li</div>
+            <div class="at_details">li<br/>[kr]4d<sup>1</sup>5s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">19</div>
+            <div class="symbol">Fi</div>
+            <div class="at_details">figure<br/>[kr]4d<sup>2</sup>5s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">23</div>
+            <div class="symbol">A</div>
+            <div class="at_details">a<br/>[kr]4d<sup>4</sup>5s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">27</div>
+            <div class="symbol">S</div>
+            <div class="at_details">s<br/>[kr]4d<sup>5</sup>5s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">31</div>
+            <div class="symbol">Ab</div>
+            <div class="at_details">abbr<br/>[kr]4d<sup>5</sup>5s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">35</div>
+            <div class="symbol">Va</div>
+            <div class="at_details">var<br/>[kr]4d<sup>7</sup>5s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">39</div>
+            <div class="symbol">Sup</div>
+            <div class="at_details">sup<br/>[kr]4d<sup>8</sup>5s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">43</div>
+            <div class="symbol">Mk</div>
+            <div class="at_details">mark<br/>[kr]4d<sup>10</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">47</div>
+            <div class="symbol">Img</div>
+            <div class="at_details">img<br/>[kr]4d<sup>10</sup>5s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">51</div>
+            <div class="symbol">Obj</div>
+            <div class="at_details">Object<br/>[kr]4d<sup>10</sup>5s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">57</div>
+            <div class="symbol">Map</div>
+            <div class="at_details">map<br/>[kr]4d<sup>10</sup>5s<sup>2</sup>5p<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">63</div>
+            <div class="symbol">Tbd</div>
+            <div class="at_details">tbody<br/>[kr]4d<sup>10</sup>5s<sup>2</sup>5p<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">69</div>
+            <div class="symbol">Frm</div>
+            <div class="at_details">form<br/>[kr]4d<sup>10</sup>5s<sup>2</sup>5p<sup>3</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">75</div>
+            <div class="symbol">Opt</div>
+            <div class="at_details">optgroup<br/>[kr]4d<sup>10</sup>5s<sup>2</sup>5p<sup>4</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">81</div>
+            <div class="symbol">Fs</div>
+            <div class="at_details">fieldset<br/>[kr]4d<sup>10</sup>5s<sup>2</sup>5p<sup>5</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">88</div>
+            <div class="symbol">Det</div>
+            <div class="at_details">datalist<br/>[kr]4d<sup>10</sup>5s<sup>2</sup>5p<sup>6</sup></div>
+          </div>
+        </div>
+      </div>
+      <div class="periodic-row">
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">6</div>
+            <div class="symbol">Lk</div>
+            <div class="at_details">link<br/>[Xe]6s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">12</div>
+            <div class="symbol">Bq</div>
+            <div class="at_details">blockquote<br/>[Xe]6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">16</div>
+            <div class="symbol">Dl</div>
+            <div class="at_details">dl<br/>[Xe]4f<sup>14</sup>5d<sup>1</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">20</div>
+            <div class="symbol">Fc</div>
+            <div class="at_details">figcaption<br/>[Xe]4f<sup>14</sup>5d<sup>2</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">24</div>
+            <div class="symbol">Em</div>
+            <div class="at_details">em<br/>[Xe]4f<sup>14</sup>5d<sup>3</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">28</div>
+            <div class="symbol">Ci</div>
+            <div class="at_details">cite<br/>[Xe]4f<sup>14</sup>5d<sup>4</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">32</div>
+            <div class="symbol">Da</div>
+            <div class="at_details">Data<br/>[Xe]4f<sup>14</sup>5d<sup>5</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">36</div>
+            <div class="symbol">Sa</div>
+            <div class="at_details">samp<br/>[Xe]4f<sup>14</sup>5d<sup>6</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">40</div>
+            <div class="symbol">I</div>
+            <div class="at_details">i<br/>[Xe]4f<sup>14</sup>5d<sup>7</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">44</div>
+            <div class="symbol">Sp</div>
+            <div class="at_details">span<br/>[Xe]4f<sup>14</sup>5d<sup>9</sup>6s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">48</div>
+            <div class="symbol">Pic</div>
+            <div class="at_details">picture<br/>[Xe]4f<sup>14</sup>5d<sup>10</sup>6s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">53</div>
+            <div class="symbol">Par</div>
+            <div class="at_details">param<br/>[Xe]4f<sup>14</sup>5d<sup>10</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">58</div>
+            <div class="symbol">Ar</div>
+            <div class="at_details">area<br/>[Xe]4f<sup>14</sup>5d<sup>10</sup>6s<sup>2</sup>6p<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">64</div>
+            <div class="symbol">Thd</div>
+            <div class="at_details">thead<br/>[Xe]4f<sup>14</sup>5d<sup>10</sup>6s<sup>2</sup>6p<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">70</div>
+            <div class="symbol">Lab</div>
+            <div class="at_details">label<br/>[Xe]4f<sup>14</sup>5d<sup>10</sup>6s<sup>2</sup>6p<sup>3</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">76</div>
+            <div class="symbol">O</div>
+            <div class="at_details">option<br/>[Xe]4f<sup>14</sup>5d<sup>10</sup>6s<sup>2</sup>6p<sup>4</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">82</div>
+            <div class="symbol">Le</div>
+            <div class="at_details">legend<br />[Xe]4f<sup>14</sup>5d<sup>10</sup>6s<sup>2</sup>6p<sup>5</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">89</div>
+            <div class="symbol">Sum</div>
+            <div class="at_details">summary<br/>[Xe]4f<sup>14</sup>5d<sup>10</sup>6s<sup>2</sup>6p<sup>6</sup></div>
+          </div>
+        </div>
+      </div>
+      <div class="periodic-row">
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">7</div>
+            <div class="symbol">Mt</div>
+            <div class="at_details">Meta<br/>[Rn]7s<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">13</div>
+            <div class="symbol">Ol</div>
+            <div class="at_details">Ol<br/>[Rn]7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+                <div class="element">
+            <div class="at_num">17</div>
+            <div class="symbol">Dt</div>
+            <div class="at_details">dt<br/>[Rn]5f<sup>14</sup>7s<sup>2</sup>7p<sup>1</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">21</div>
+            <div class="symbol">Dv</div>
+            <div class="at_details">div<br/>[Rn]5f<sup>14</sup>6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">25</div>
+            <div class="symbol">Str</div>
+            <div class="at_details">strong<br/>fff</div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">29</div>
+            <div class="symbol">Q</div>
+            <div class="at_details">q<br/></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">33</div>
+            <div class="symbol">Tim</div>
+            <div class="at_details">time<br/></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">37</div>
+            <div class="symbol">Kb</div>
+            <div class="at_details">kbd<br /></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">41</div>
+            <div class="symbol">B</div>
+            <div class="at_details">b<br/></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">45</div>
+            <div class="symbol">Br</div>
+            <div class="at_details">br<br/></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">49</div>
+            <div class="symbol">Ifr</div>
+            <div class="at_details">iframe<br/></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">53</div>
+            <div class="symbol">Vi</div>
+            <div class="at_details">video<br/></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">59</div>
+            <div class="symbol">Tb</div>
+            <div class="at_details">table<br /></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">65</div>
+            <div class="symbol">Tft</div>
+            <div class="at_details">tfoot<br /></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">71</div>
+            <div class="symbol">In</div>
+            <div class="at_details">input<br /></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">77</div>
+            <div class="symbol">Ta</div>
+            <div class="at_details">textarea<br /></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">83</div>
+            <div class="symbol">Sc</div>
+            <div class="at_details">script<br /></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">90</div>
+            <div class="symbol">Dia</div>
+            <div class="at_details">dialog<br /></div>
+          </div>
+        </div>
+      </div>
+      <div class="periodic-row"></div>
+      <div class="periodic-row">
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">91</div>
+            <div class="symbol">Art</div>
+            <div class="at_details">article<br/>[Xe]5d<sup>1</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">92</div>
+            <div class="symbol">Sec</div>
+            <div class="at_details">section<br/>[Xe]4f<sup>1</sup>5d<sup>1</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">93</div>
+            <div class="symbol">Nav</div>
+            <div class="at_details">nav<br/>[Xe]4f<sup>3</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">94</div>
+            <div class="symbol">Hg</div>
+            <div class="at_details">hgroup<br/>[Xe]4f<sup>4</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">95</div>
+            <div class="symbol">H1</div>
+            <div class="at_details">h1<br/>[Xe]4f<sup>5</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">96</div>
+            <div class="symbol">H2</div>
+            <div class="at_details">h2<br/>[Xe]4f<sup>6</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">97</div>
+            <div class="symbol">H3</div>
+            <div class="at_details">h3<br/>[Xe]4f<sup>7</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">98</div>
+            <div class="symbol">H4</div>
+            <div class="at_details">h4<br/>[Xe]4f<sup>7</sup>5d<sup>1</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">99</div>
+            <div class="symbol">H5</div>
+            <div class="at_details">h5<br/>[Xe]4f<sup>9</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">100</div>
+            <div class="symbol">H6</div>
+            <div class="at_details">h6<br/>[Xe]4f<sup>10</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">101</div>
+            <div class="symbol">Sr</div>
+            <div class="at_details">search<br/>[Xe]4f<sup>11</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">102</div>
+            <div class="symbol">Hdr</div>
+            <div class="at_details">header<br/>[Xe]4f<sup>14</sup>6s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">115</div>
+            <div class="symbol">App</div>
+            <div class="at_details">applet<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">116</div>
+            <div class="symbol">Acr</div>
+            <div class="at_details">acronym<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">117</div>
+            <div class="symbol">Fr</div>
+            <div class="at_details">frame<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">118</div>
+            <div class="symbol">Frs</div>
+            <div class="at_details">frameset<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">119</div>
+            <div class="symbol">Nfr</div>
+            <div class="at_details">noframe<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+      </div>
+      <div class="periodic-row">
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">103</div>
+            <div class="symbol">Ftr</div>
+            <div class="at_details">footer<br/>[Rn]6d<sup>1</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">104</div>
+            <div class="symbol">Asd</div>
+            <div class="at_details">aside<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">105</div>
+            <div class="symbol">Add</div>
+            <div class="at_details">address<br/>[Rn]5f<sup>2</sup>6d<sup>1</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">106</div>
+            <div class="symbol">Rub</div>
+            <div class="at_details">Ruby<br/>[Rn]5f<sup>3</sup>6d<sup>1</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">107</div>
+            <div class="symbol">Rb</div>
+            <div class="at_details">rb<br/>[Rn]5f<sup>4</sup>6d<sup>1</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">108</div>
+            <div class="symbol">Rt</div>
+            <div class="at_details">rt<br/>[Rn]5f<sup>6</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">109</div>
+            <div class="symbol">Rtc</div>
+            <div class="at_details">rtc<br/>[Rn]5f<sup>7</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">110</div>
+            <div class="symbol">Rp</div>
+            <div class="at_details">rp<br/>[Rn]5f<sup>7</sup>6d<sup>1</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">111</div>
+            <div class="symbol">Bdi</div>
+            <div class="at_details">Bdi<br/>[Rn]5f<sup>9</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">112</div>
+            <div class="symbol">Bdo</div>
+            <div class="at_details">bdo<br/>[Rn]5f<sup>10</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">113</div>
+            <div class="symbol">Ins</div>
+            <div class="at_details">ins<br/>[Rn]5f<sup>11</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">114</div>
+            <div class="symbol">Del</div>
+            <div class="at_details">del<br/>[Rn]5f<sup>14</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell empty"></div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">120</div>
+            <div class="symbol">Fnt</div>
+            <div class="at_details">font<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">121</div>
+            <div class="symbol">Big</div>
+            <div class="at_details">big<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">122</div>
+            <div class="symbol">Blk</div>
+            <div class="at_details">blink<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">123</div>
+            <div class="symbol">Cen</div>
+            <div class="at_details">center<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="element">
+            <div class="at_num">124</div>
+            <div class="symbol">Mrq</div>
+            <div class="at_details">marquee<br/>[Rn]6d<sup>2</sup>7s<sup>2</sup></div>
+          </div>
+        </div>
+  </div>
+ </body>
 </html>
